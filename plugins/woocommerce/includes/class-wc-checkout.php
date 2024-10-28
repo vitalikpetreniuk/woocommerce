@@ -1220,12 +1220,12 @@ class WC_Checkout {
 				$messages = wc_print_notices( true );
 			}
 
-			$response = array(
+			$response = apply_filters('woocommerce_checkout_failure_response', array(
 				'result'   => 'failure',
 				'messages' => isset( $messages ) ? $messages : '',
 				'refresh'  => isset( WC()->session->refresh_totals ),
 				'reload'   => isset( WC()->session->reload_checkout ),
-			);
+			));
 
 			unset( WC()->session->refresh_totals, WC()->session->reload_checkout );
 
